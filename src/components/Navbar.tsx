@@ -4,8 +4,73 @@ import { Link } from "react-router-dom"
 import logo from "../assets/lumiere.png";
 import { Menu, X, Scissors, User } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 
 export function Navbar() {
+  const token = localStorage.getItem("accessToken");
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  // const handleNav = (sectionId?: string) => {
+  //   if (!sectionId) return;
+
+  //   if (location.pathname !== "/") {
+  //     navigate("/", { state: { scrollTo: sectionId } });
+  //   } else {
+  //     scrollToSection(sectionId);
+  //   }
+  // };
+
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const targetPosition = el.getBoundingClientRect().top + window.scrollY;
+
+    const startPosition = window.pageYOffset
+    const distance = targetPosition - startPosition
+
+    const duration = 1200
+    let start: number | null = null
+
+    const easeInOutCubic = (t: number) =>
+      t < 0.5
+        ? 4 * t * t * t
+        : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime
+
+      const timeElapsed = currentTime - start
+      const progress = Math.min(timeElapsed / duration, 1)
+
+      window.scrollTo(
+        0,
+        startPosition + distance * easeInOutCubic(progress)
+      )
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation)
+      }
+    }
+
+    requestAnimationFrame(animation)
+  };
+
+  const goToSection = (sectionId: string) => {
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      scrollToSection(sectionId);
+    }
+  };
+
+  const goToPage = (path: string) => {
+    navigate(path);
+  };
+
+
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -28,53 +93,62 @@ export function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-12">
-          <NavLink href="#services">
-            <div className="flex items-center space-x-1 text-primary gap-2">
+          <button onClick={() => goToSection("services")}
+            className="relative text-sm font-medium text-foreground/80 group">
+            <div className="flex items-center space-x-1 gap-2">
               <Scissors size={15} />
               <span>Services</span>
             </div>
-          </NavLink>
-          <NavLink href="#stylists">
+          </button>
+          <button onClick={() => goToSection("hero")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>Home</span>
             </div>
-          </NavLink>
-          <NavLink href="#about">
+          </button>
+          <button onClick={() => goToSection("about")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>About</span>
             </div>
-          </NavLink>
-          <NavLink href="#contact">
+          </button>
+          <button onClick={() => goToSection("contact")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>Contact</span>
             </div>
-          </NavLink>
-          <NavLink href="#booking">
+          </button>
+          <button onClick={() => goToPage("/booking")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>Booking</span>
             </div>
-          </NavLink>
-          <NavLink href="#contact">
+          </button>
+          <button onClick={() => goToPage("/register")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>SignUp</span>
             </div>
-          </NavLink>
-          <NavLink href="#contact">
+          </button>
+          <button onClick={() => goToPage("/login")}
+            className="relative text-sm font-medium text-foreground/80 group">
             <div className="flex items-center space-x-1 text-primary gap-2">
               <Scissors size={15} />
               <span>Login</span>
             </div>
-          </NavLink>
-          <NavLink href="/account">
-            <div className="flex items-center text-primary gap-2">
-              <User size={22} strokeWidth={1.8} />
-            </div>
-          </NavLink>
+          </button>
+          {token && (
+            <NavLink href="/profile">
+              <div className="flex items-center text-primary gap-2">
+                <User size={22} strokeWidth={1.8} />
+              </div>
+            </NavLink>
+          )}
           {/* <button
             onClick={() => dispatch(openBookingModal(null))}
             variant="default"

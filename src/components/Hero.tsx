@@ -44,7 +44,7 @@ export function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen h-screen sticky top-0 items-center pt-20 overflow-hidden bg-transparent">
+    <section id="hero" ref={ref} className="relative min-h-screen h-screen sticky top-0 items-center pt-20 overflow-hidden bg-transparent">
   <div className="absolute inset-0 z-0">
     <Antigravity
       count={500}

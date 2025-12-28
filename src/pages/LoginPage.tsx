@@ -43,17 +43,28 @@ export default function LoginPage() {
       localStorage.setItem("accessToken", res.accessToken);
       localStorage.setItem("refreshToken", res.refreshToken);
 
+      const role = res.user?.roles?.[0];
+
+      if (role) {
+        localStorage.setItem("role", role);
+      }
+
       const profileData = await fetchUserProfile();
       dispatch(setProfile({
         ...profileData,
-        avatarColor: "#d4af37", 
+        avatarColor: "#d4af37",
         joinDate: new Date().toISOString(),
         loyaltyPoints: 0,
       }));
 
 
       alert(`Login Successful!`);
-      navigate("/profile");
+      if (role === "ADMIN") {
+        navigate("/admin", { replace: true });
+      } else {
+        navigate("/profile", { replace: true });
+      }
+      // navigate("/profile");
 
     } catch (error: any) {
       console.error("Login error:", error.response?.data || error);
@@ -74,8 +85,18 @@ export default function LoginPage() {
         localStorage.setItem("accessToken", res.data.accessToken);
         localStorage.setItem("refreshToken", res.data.refreshToken);
 
+        const role = res.data.user?.roles?.[0];
+        if (role) {
+          localStorage.setItem("role", role);
+        }
+
         alert("Google Login Success!");
-        navigate("/profile");
+        if (role === "ADMIN") {
+          navigate("/admin", { replace: true });
+        } else {
+          navigate("/profile", { replace: true });
+        }
+        // navigate("/profile");
 
       } catch (err: any) {
         console.error("Google login error:", err.response?.data || err);
@@ -156,7 +177,7 @@ export default function LoginPage() {
                     <div
                       className="absolute inset-0 rounded-2xl pointer-events-none"
                       style={{
-                        padding: "2px", 
+                        padding: "2px",
                         background: "linear-gradient(135deg, #d4af37, #f7d774, #d4af37)",
                         WebkitMask:
                           "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -193,7 +214,7 @@ export default function LoginPage() {
                     <div
                       className="absolute inset-0 rounded-2xl pointer-events-none"
                       style={{
-                        padding: "2px", 
+                        padding: "2px",
                         background: "linear-gradient(135deg, #d4af37, #f7d774, #d4af37)",
                         WebkitMask:
                           "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",

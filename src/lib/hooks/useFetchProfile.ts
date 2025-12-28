@@ -8,7 +8,11 @@ export const useFetchProfile = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-    if (!token) return; 
+
+    if (!token) {
+    dispatch(logout()); 
+    return;
+  }
 
     const loadProfile = async () => {
       try {

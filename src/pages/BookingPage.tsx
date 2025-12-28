@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { BookingCard } from "../components/BookingCard"
 import type { RootState } from "../lib/store"
 import { useNavigate } from "react-router-dom"
 import type { BookingCardData } from "../lib/bookingType"
@@ -15,6 +14,7 @@ import type { ServiceType } from "../services/service";
 import type { PublicStaffType } from "../services/staff";
 import { BookingSummary } from "../components/BookingSummary"
 import { createBooking, deleteBooking } from "../services/booking"
+
 
 export default function BookingPage() {
 
@@ -79,31 +79,40 @@ export default function BookingPage() {
     e.preventDefault()
     if (!profile) return
 
-    const service = services.find(s => s._id === selectedService)!
-    const stylist = stylists.find(s => s._id === selectedStylist)!
+    try {
 
-    const payload: Omit<BookingCardData, "id" | "userName" | "userPhone" | "avatarUrl" | "status"> = {
-      serviceName: service.name,
-      servicePrice: service.price,
-      serviceDuration: service.duration,
-      bookingDate: selectedDate,
-      bookingTime: selectedTime,
-      stylistName: stylist.name,
-      stylistRole: stylist.role,
+      const service = services.find(s => s._id === selectedService)!
+      const stylist = stylists.find(s => s._id === selectedStylist)!
+
+      const payload: Omit<BookingCardData, "id" | "userName" | "userPhone" | "avatarUrl" | "status"> = {
+        serviceName: service.name,
+        servicePrice: service.price,
+        serviceDuration: service.duration,
+        bookingDate: selectedDate,
+        bookingTime: selectedTime,
+        stylistName: stylist.name,
+        stylistRole: stylist.role,
+      }
+
+      const saved = await createBooking(payload)
+
+      const card: BookingCardData = {
+        id: saved._id,
+        userName: profile.name,
+        userPhone: profile.phone ?? "N/A",
+        avatarUrl: profile.avatarUrl,
+        ...payload,
+        status: "PENDING",
+      }
+
+      setBookingCards(prev => [...prev, card])
+    } catch (err: any) {
+      if (err.response?.status === 409) {
+        alert("This booking slot is already booked. Please choose another time.");
+      } else {
+        alert("Booking failed. Try again.");
+      }
     }
-
-    const saved = await createBooking(payload)
-
-    const card: BookingCardData = {
-      id: saved._id,
-      userName: profile.name,
-      userPhone: profile.phone ?? "N/A",
-      avatarUrl: profile.avatarUrl,
-      ...payload,
-      status: "PENDING",
-    }
-
-    setBookingCards(prev => [...prev, card])
   }
 
   return (

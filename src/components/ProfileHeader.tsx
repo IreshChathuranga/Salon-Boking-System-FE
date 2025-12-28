@@ -26,6 +26,10 @@ export function ProfileHeader() {
   }
 
   const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("role")
+    
     dispatch(logout())
     navigate("/login") 
   }
