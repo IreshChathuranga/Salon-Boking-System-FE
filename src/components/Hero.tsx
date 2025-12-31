@@ -54,7 +54,7 @@ export function Hero() {
       waveAmplitude={1.2}
       particleSize={1.4}
       lerpSpeed={0.06}
-      color="rgba(180,140,90,0.4)"
+      color="rgba(0, 0, 0, 0.4)"
       autoAnimate
       particleVariance={1}
     />

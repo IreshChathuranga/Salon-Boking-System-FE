@@ -55,9 +55,9 @@ export const AdminSidebar = () => {
           Bookings
         </Link>
 
-        <Link to="/admin/payment" className={navItemClass("/admin/payment")}>
+        <Link to="/admin/payments" className={navItemClass("/admin/payments")}>
           <Calendar size={18} />
-          Payment
+          Payments
         </Link>
 
         <Link to="/admin/settings" className={navItemClass("/admin/settings")}>

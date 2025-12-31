@@ -27,7 +27,6 @@ export function ProfileForm() {
     const dispatch = useDispatch()
     const [submitted, setSubmitted] = useState(false)
     const [avatarFile, setAvatarFile] = useState<File | null>(null)
-    // const [setLoading] = useState(false)
     const { register, handleSubmit, formState: { errors }, reset } = useForm<ProfileFormData>({
         resolver: zodResolver(profileSchema),
         defaultValues: {

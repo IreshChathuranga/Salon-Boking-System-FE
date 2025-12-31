@@ -1,4 +1,3 @@
-'use client'
 import bg from "../assets/loginimage.jpg"
 import logo from "../assets/lumiere.png";
 import { useState, type FormEvent } from 'react'

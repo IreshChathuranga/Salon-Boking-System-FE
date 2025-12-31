@@ -1,11 +1,9 @@
-// import { useRef } from "react";
-// import { motion, useScroll, useTransform } from "framer-motion";
 import p1 from "../assets/pic1.jpg"
 import p2 from "../assets/pic6.jpg"
 import p3 from "../assets/pic4.jpg"
 import p4 from "../assets/pic5.jpg"
 import { useEffect, useState } from "react";
-import { fetchServices} from "../services/service";
+import { fetchServices } from "../services/service";
 import type { ServiceType } from "../services/service";
 
 
@@ -54,20 +52,18 @@ export function ServicesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4">
-           {services.map((service, index) => {
+          {services.map((service, index) => {
             const image =
-              serviceImageMap[service.name] ?? p3; 
+              serviceImageMap[service.name] ?? p3;
 
             return (
               <div
                 key={service._id}
-                className={`group relative ${
-                  index === 0 ? "rounded-l-2xl overflow-hidden" : ""
-                } ${
-                  index === services.length - 1
+                className={`group relative ${index === 0 ? "rounded-l-2xl overflow-hidden" : ""
+                  } ${index === services.length - 1
                     ? "rounded-r-2xl overflow-hidden"
                     : ""
-                }`}
+                  }`}
               >
                 <div className="relative w-full h-100 bg-black overflow-hidden group">
                   <img
@@ -79,7 +75,7 @@ export function ServicesSection() {
                   <div className="absolute top-70 left-5 px-3 py-2 rounded-md shadow text-left">
                     <h1 className="animate-shine-word text-white uppercase leading-tight font-bold text-[30px] leading-5">
                       {service.name.split(" ").slice(0, 2).join(" ")}
-                      <br/>
+                      <br />
                       {service.name.split(" ").slice(2).join(" ")}
                     </h1>
                   </div>

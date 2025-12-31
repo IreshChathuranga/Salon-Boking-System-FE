@@ -17,6 +17,8 @@ const AdminUsersPage = lazy(() => import('../pages/admin/AdminUsersPage'));
 const AdminStaffPage = lazy(() => import('../pages/admin/AdminStaffPage'));
 const AdminServicePage = lazy(() => import('../pages/admin/AdminServicePage'));
 const AdminBokingPage = lazy(() => import('../pages/admin/AdminBokingPage'));
+const AdminPaymentPage = lazy(() => import('../pages/admin/AdminPaymentPage'));
+const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'));
 
 export default function Router() {
     return (
@@ -53,6 +55,8 @@ export default function Router() {
                             <Route path="/admin/staffs" element={<AdminStaffPage />} />
                             <Route path="/admin/services" element={<AdminServicePage />} />
                             <Route path="/admin/bookings" element={<AdminBokingPage />} />
+                            <Route path="/admin/payments" element={<AdminPaymentPage />} />
+                            <Route path="/admin/settings" element={<AdminSettingsPage />} />
                         </Route>
 
                     </Routes>

@@ -11,6 +11,8 @@ export const AdminLayout = () => {
     if (location.pathname === "/admin/bookings") return "Bookings"
     if (location.pathname === "/admin/services") return "Services"
     if (location.pathname === "/admin/staffs") return "Staffs"
+    if (location.pathname === "/admin/payments") return "Payments"
+    if (location.pathname === "/admin/settings") return "Settings"
     return "Admin"
   }
 

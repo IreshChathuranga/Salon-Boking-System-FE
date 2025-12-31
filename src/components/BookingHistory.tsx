@@ -1,52 +1,44 @@
-// src/pages/BookingHistory.tsx
 import { useEffect, useState } from "react";
+import { getMyBookings } from "../services/booking";
 
 interface Booking {
-  id: string;
-  service: string;
-  date: string;
-  time: string;
-  price: number;
-  status: "completed" | "pending" | "canceled";
+  _id: string;
+  serviceName: string;
+  bookingDate: string;
+  bookingTime: string;
+  servicePrice: number;
+  status: "PENDING" | "PAID";
 }
 
 export default function BookingHistory() {
   const [history, setHistory] = useState<Booking[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setHistory([
-      {
-        id: "001",
-        service: "Hair Cut",
-        date: "2025-01-10",
-        time: "10:30 AM",
-        price: 2500,
-        status: "completed",
-      },
-      {
-        id: "002",
-        service: "Facial Treatment",
-        date: "2025-01-15",
-        time: "02:00 PM",
-        price: 5500,
-        status: "pending",
-      },
-      {
-        id: "003",
-        service: "Hair Color",
-        date: "2025-01-20",
-        time: "01:00 PM",
-        price: 7500,
-        status: "canceled",
-      },
-    ]);
+    const loadHistory = async () => {
+      try {
+        const data = await getMyBookings();
+        setHistory(data);
+      } catch (err) {
+        console.error("Failed to load booking history", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadHistory();
   }, []);
 
   const statusClasses = {
-    completed: "text-green-600 bg-green-100",
-    pending: "text-yellow-600 bg-yellow-100",
-    canceled: "text-red-600 bg-red-100",
+    PAID: "text-green-600 bg-green-100",
+    PENDING: "text-yellow-600 bg-yellow-100",
   };
+
+  if (loading) return <p>Loading booking history...</p>;
+
+  if (history.length === 0) {
+    return <p className="text-gray-500">No bookings found.</p>;
+  }
 
   return (
     <div className="p-6">
@@ -55,18 +47,18 @@ export default function BookingHistory() {
       <div className="space-y-4">
         {history.map((item) => (
           <div
-            key={item.id}
+            key={item._id}
             className="p-4 rounded-xl border bg-white shadow-sm flex justify-between items-center"
           >
             <div>
-              <p className="font-semibold">{item.service}</p>
+              <p className="font-semibold">{item.serviceName}</p>
               <p className="text-sm text-gray-500">
-                {item.date} • {item.time}
+                {item.bookingDate} • {item.bookingTime}
               </p>
             </div>
 
             <div className="text-right">
-              <p className="font-bold">Rs {item.price}</p>
+              <p className="font-bold">Rs {item.servicePrice}</p>
               <span
                 className={`px-3 py-1 text-sm rounded-full ${statusClasses[item.status]}`}
               >

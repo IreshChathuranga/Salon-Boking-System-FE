@@ -11,17 +11,6 @@ export function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // const handleNav = (sectionId?: string) => {
-  //   if (!sectionId) return;
-
-  //   if (location.pathname !== "/") {
-  //     navigate("/", { state: { scrollTo: sectionId } });
-  //   } else {
-  //     scrollToSection(sectionId);
-  //   }
-  // };
-
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -149,13 +138,6 @@ export function Navbar() {
               </div>
             </NavLink>
           )}
-          {/* <button
-            onClick={() => dispatch(openBookingModal(null))}
-            variant="default"
-            className="rounded-full px-6 bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-          >
-            Book Now
-          </butt> */}
         </div>
 
         <button className="md:hidden text-primary" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>

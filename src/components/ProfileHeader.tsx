@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import type { RootState } from "../lib/store"
 import { toggleEditMode, logout, setSection } from "../lib/features/user-slice"
 import { LogOut, Edit2, User } from "lucide-react"
-import { Link , useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import mainprofile from "../assets/usermainpic.jpg"
 
 export function ProfileHeader() {
@@ -29,9 +29,9 @@ export function ProfileHeader() {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("role")
-    
+
     dispatch(logout())
-    navigate("/login") 
+    navigate("/login")
   }
 
   return (
@@ -48,17 +48,17 @@ export function ProfileHeader() {
 
         <div className="flex flex-col justify-end gap-2 w-70 p-4 rounded-lg items-start">
           <button onClick={() => dispatch(setSection("contact"))} className="flex text-[#d4af37] w-50 border border-[#d4af37] bg-black/70 rounded-3xl justify-center top-30 gap-2 p-2
-    transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
+            transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
             Contact Information
           </button>
 
           <button onClick={() => dispatch(setSection("history"))} className="flex text-[#d4af37] w-50 border border-[#d4af37] bg-black/70 rounded-3xl justify-center top-30 gap-2 p-2
-    transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
+            transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
             Booking History
           </button>
 
           <button onClick={() => dispatch(setSection("settings"))} className="flex text-[#d4af37] w-50 border border-[#d4af37] bg-black/70 rounded-3xl justify-center top-30 gap-2 p-2
-    transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
+            transition-all duration-300 hover:bg-black/90 hover:text-[#f7d774] hover:border-[#f7d774]">
             Settings
           </button>
         </div>

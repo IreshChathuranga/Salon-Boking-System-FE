@@ -23,7 +23,6 @@
   }
 }
 
-/* Golden Shining Animation */
 .gold-btn {
   position: relative;
   overflow: hidden;
@@ -58,19 +57,11 @@
   }
 }
 
-/* Golden Text Hover Glow */
-/* .nav-gold:hover {
-  color: #f7d774 !important;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-} */
-
-/* Golden Underline with Glow */
 .nav-gold-line {
   background: linear-gradient(135deg, #d4af37, #f7d774, #d4af37);
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
 }
 
-/* SHINE ANIMATION */
 .logo-shine {
   position: relative;
   overflow: hidden;
@@ -121,14 +112,7 @@
   box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
 }
 
-/* @keyframes shine {
-  0% {
-    transform: translateX(-150%);
-  }
-  100% {
-    transform: translateX(150%);
-  }
-} */
+
 
 .animate-shine {
   animation: shine 2.5s linear infinite;
