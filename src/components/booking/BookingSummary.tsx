@@ -1,8 +1,8 @@
 import { BookingCard } from "./BookingCard"
-import type { BookingCardData } from "../lib/bookingType"
+import type { BookingCardData } from "../../lib/bookingType"
 import { useState } from "react"
-import { StripeCheckout } from "./StripeCheckout"
-import { createCheckoutSession } from "../services/payment"
+import { StripeCheckout } from "../StripeCheckout"
+import { createCheckoutSession } from "../../services/payment"
 
 type Props = {
   bookings: BookingCardData[]

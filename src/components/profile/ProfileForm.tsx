@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from "react-redux"
 import type { TypedUseSelectorHook } from "react-redux"
-import type { RootState } from "../lib/store"
-import { toggleEditMode, updateUserProfile as updateUserProfileRedux } from "../lib/features/user-slice"
+import type { RootState } from "../../lib/store"
+import { toggleEditMode, updateUserProfile as updateUserProfileRedux } from "../../lib/features/user-slice"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useState, useEffect } from "react"
-import { updateUserProfile } from "../services/auth"
+import { updateUserProfile } from "../../services/auth"
 import { useNavigate } from "react-router-dom"
 
 const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

@@ -1,8 +1,8 @@
 import React from "react"
 import { useEffect, useState } from "react";
 import { Check } from "lucide-react"
-import type { ServiceType } from "../services/service";
-import type { PublicStaffType } from "../services/staff";
+import type { ServiceType } from "../../services/service";
+import type { PublicStaffType } from "../../services/staff";
 import { Scissors, Sparkles, Droplets, Wand2 } from "lucide-react"
 
 const serviceIconMap: Record<string, any> = {

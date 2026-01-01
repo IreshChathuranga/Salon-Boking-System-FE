@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getMyBookings } from "../services/booking";
+import { getMyBookings } from "../../services/booking";
 
 interface Booking {
   _id: string;

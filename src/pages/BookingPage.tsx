@@ -6,13 +6,13 @@ import type { BookingCardData } from "../lib/bookingType"
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer"
 import { BookingHeader } from "../components/ui/BookingHeader"
-import { BookingForm } from "../components/BookingForm"
+import { BookingForm } from "../components/booking/BookingForm"
 import Antigravity from "../components/ui/Antigravity"
 import { fetchServices } from "../services/service";
 import { fetchPublicStaff } from "../services/staff";
 import type { ServiceType } from "../services/service";
 import type { PublicStaffType } from "../services/staff";
-import { BookingSummary } from "../components/BookingSummary"
+import { BookingSummary } from "../components/booking/BookingSummary"
 import { createBooking, deleteBooking } from "../services/booking"
 
 

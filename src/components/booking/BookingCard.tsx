@@ -1,4 +1,4 @@
-import type { BookingCardData } from "../lib/bookingType"
+import type { BookingCardData } from "../../lib/bookingType"
 type Props = {
   data: BookingCardData
   onRemove: (id: string) => void

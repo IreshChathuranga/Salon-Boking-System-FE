@@ -2,9 +2,9 @@ import { useSelector } from "react-redux"
 import type { RootState} from "../lib/store"
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer"
-import { ProfileHeader } from "../components/ProfileHeader"
-import { ProfileForm } from "../components/ProfileForm"
-import BookingHistory from "../components/BookingHistory"
+import { ProfileHeader } from "../components/profile/ProfileHeader"
+import { ProfileForm } from "../components/profile/ProfileForm"
+import BookingHistory from "../components/booking/BookingHistory"
 import Settings from "../components/Settings"
 import { useFetchProfile } from "../lib/hooks/useFetchProfile";
 

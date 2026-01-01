@@ -1,8 +1,8 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { RequiredAuth } from "../components/RequiredAuth"
+import { RequiredAuth } from "../components/auth/RequiredAuth"
 import { AuthLayout } from "../components/layout/AuthLayout"
-import { AdminOnlyAuth } from "../components/AdminOnlyAuth"
+import { AdminOnlyAuth } from "../components/auth/AdminOnlyAuth"
 import { AdminLayout } from "../components/layout/AdminLayout"
 
 

@@ -3,7 +3,7 @@ import { Hero } from "../components/Hero";
 import { Navbar } from "../components/Navbar";
 import { ServicesSection } from "../components/Service";
 import { FeaturedSection } from "../components/FeaturedSection";
-import { Contact } from "../components/Contact";
+import { Contact } from "../components/contact/Contact";
 import { Map } from "../components/Map";
 import { StickyWrapper } from "../components/ui/StickyWrapper";
 import { useLocation } from "react-router-dom";

@@ -1,7 +1,7 @@
 
 import { useSelector, useDispatch } from "react-redux"
-import type { RootState } from "../lib/store"
-import { toggleEditMode, logout, setSection } from "../lib/features/user-slice"
+import type { RootState } from "../../lib/store"
+import { toggleEditMode, logout, setSection } from "../../lib/features/user-slice"
 import { LogOut, Edit2, User } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import mainprofile from "../assets/usermainpic.jpg"

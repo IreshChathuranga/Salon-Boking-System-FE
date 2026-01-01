@@ -1,4 +1,4 @@
-import { ContactForm } from "../components/ContactFrom"
+import { ContactForm } from "./ContactFrom"
 import bg from "../assets/contactbg.jpg"
 export function Contact() {
     return (
