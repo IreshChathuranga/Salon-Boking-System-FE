@@ -3,13 +3,22 @@ import { refreshTokens } from "./auth";
 
 const api = axios.create({
   baseURL: "https://salon-boking-system-be.vercel.app/api/v1",
+  withCredentials: true,
 });
 
-const PUBLIC_ENDPOINTS = ["/user/login", "/user/register", "/user/refreshtoken"];
+const PUBLIC_ENDPOINTS = [
+  "/user/login",
+  "/user/register",
+  "/user/refreshtoken",
+  "/service",
+  "/staff"
+];
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
-  const isPublic = PUBLIC_ENDPOINTS.some((url) => config.url?.includes(url));
+  const isPublic = PUBLIC_ENDPOINTS.some(url =>
+    config.url?.startsWith(url)
+  );
 
   if (token && !isPublic) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -23,13 +32,20 @@ api.interceptors.response.use(
   async (error: AxiosError) => {
     const originalRequest: any = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
+    const isPublic = PUBLIC_ENDPOINTS.some(url =>
+      originalRequest?.url?.startsWith(url)
+    );
+
+    if (
+      error.response?.status === 401 &&
+      !originalRequest._retry &&
+      !isPublic
+    ) {
       originalRequest._retry = true;
 
       const refreshToken = localStorage.getItem("refreshToken");
       if (!refreshToken) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        localStorage.clear();
         window.location.href = "/login";
         return Promise.reject(error);
       }
@@ -37,21 +53,18 @@ api.interceptors.response.use(
       try {
         const res = await refreshTokens(refreshToken);
 
-        const newAccessToken = res.accessToken || res.data?.accessToken;
-        const newRefreshToken = res.refreshToken || res.data?.refreshToken;
-
-        if (!newAccessToken) throw new Error("No new access token returned");
+        const newAccessToken = res.data?.accessToken;
+        const newRefreshToken = res.data?.refreshToken;
 
         localStorage.setItem("accessToken", newAccessToken);
-        if (newRefreshToken) localStorage.setItem("refreshToken", newRefreshToken);
+        if (newRefreshToken)
+          localStorage.setItem("refreshToken", newRefreshToken);
 
         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-        return axios(originalRequest);
-      } catch (err) {
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
+        return api(originalRequest);
+      } catch {
+        localStorage.clear();
         window.location.href = "/login";
-        return Promise.reject(err);
       }
     }
 
