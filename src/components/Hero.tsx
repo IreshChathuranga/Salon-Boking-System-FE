@@ -1,6 +1,4 @@
 import { useEffect, useState , useRef} from "react";
-import { cn } from "../lib/util";
-import { GridPattern } from "../components/ui/Gridpattern";
 import Antigravity from "../components/ui/Antigravity";
 import { motion, useScroll, useTransform } from "framer-motion";
 import haircut from "../assets/haircut.png";

@@ -2,7 +2,6 @@ import {
     getAllPayments
 } from "../../services/admin/adminPayment"
 import { useEffect, useState } from "react"
-import Swal from "sweetalert2"
 
 type PaymentUser = {
     _id: string

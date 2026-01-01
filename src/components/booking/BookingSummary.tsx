@@ -1,7 +1,5 @@
 import { BookingCard } from "./BookingCard"
 import type { BookingCardData } from "../../lib/bookingType"
-import { useState } from "react"
-import { StripeCheckout } from "../StripeCheckout"
 import { createCheckoutSession } from "../../services/payment"
 
 type Props = {
@@ -47,7 +45,7 @@ export function BookingSummary({ bookings, onRemove}: Props) {
       </h2>
 
       <div className="space-y-4">
-        {bookings.map((b, i) => (
+        {bookings.map((b) => (
           <BookingCard key={b.id} data={b} onRemove={onRemove} />
         ))}
       </div>

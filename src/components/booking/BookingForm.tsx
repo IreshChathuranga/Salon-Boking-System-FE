@@ -1,5 +1,4 @@
 import React from "react"
-import { useEffect, useState } from "react";
 import { Check } from "lucide-react"
 import type { ServiceType } from "../../services/service";
 import type { PublicStaffType } from "../../services/staff";

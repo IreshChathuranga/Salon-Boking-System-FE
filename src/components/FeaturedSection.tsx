@@ -1,8 +1,4 @@
-import { useState, useEffect } from "react"
-import b1 from "../assets/b1.jpg"
-import b2 from "../assets/b2.jpg"
-import b3 from "../assets/b3.jpg"
-import b4 from "../assets/b4.jpg"
+import { useState, useEffect } from "react";
 import { fetchPublicStaff } from "../services/staff";
 import type {PublicStaffType} from "../services/staff";
 
