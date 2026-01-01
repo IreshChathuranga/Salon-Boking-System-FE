@@ -1,5 +1,6 @@
 import { ContactForm } from "./ContactFrom"
-import bg from "../assets/contactbg.jpg"
+import bg from "../../assets/contactbg.jpg"
+
 export function Contact() {
     return (
         <section
