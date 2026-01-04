@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import { refreshTokens } from "./auth";
 
 const api = axios.create({
-  baseURL: "https://salon-boking-system-be.vercel.app/api/v1",
+  baseURL: "https://salon-boking-system-be.vercel.app/",
 });
 
 const PUBLIC_ENDPOINTS = ["/user/login", "/user/register", "/user/refreshtoken"];
