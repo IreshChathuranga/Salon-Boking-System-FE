@@ -48,11 +48,14 @@ After running the command, a local URL will be displayed in the terminal, for ex
 ```bash
 http://localhost:5173
 ```
+---
 
 Deployed Frontend URL
 
 Vercel Deployment
 https://salon-boking-system-fe.vercel.app/
+
+---
 
 # React + TypeScript + Vite
 
