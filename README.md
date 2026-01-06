@@ -57,6 +57,7 @@ https://salon-boking-system-fe.vercel.app/
 
 ---
 
+Screenshots (UI)
 ```bash
 [Home Page](screenshots/heropage.png)
 [Register Page](screenshots/signpage.png)
