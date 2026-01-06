@@ -1,13 +1,58 @@
 
 # Salon Booking System
 
-## 📖 Project Description
+## Project Description
 This is the **frontend application** of the Salon Booking System.  
 The system allows users to book salon services **online before visiting the salon** by selecting the required service, preferred date, and available time slot, and completing the payment process.
 
+The UI includes:
+- Salon services listing
+- Staff information
+- Contact details
+- Role-based layouts (User / Admin)
+- Modern, responsive design for all devices
 
+This frontend is built using **React with TypeScript**, following modern UI/UX and state management practices.
 
+---
+## Technologies Used
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Redux Toolkit**
+- **Vite**
+- **Axios**
+- **React Router DOM**
 
+---
+
+## How to Run the Frontend Locally
+
+### Step 1: Open the Project
+- Open the frontend project folder
+- Open **Command Prompt / Terminal** inside the folder
+- Or open the folder using **VS Code**
+
+### Step 2: Install Dependencies
+```bash
+npm install
+```
+
+### Step 3: run project
+```bash
+npm run dev
+```
+
+### Step 4: Open in Browser
+After running the command, a local URL will be displayed in the terminal, for example:
+```bash
+http://localhost:5173
+```
+
+Deployed Frontend URL
+
+Vercel Deployment
+https://salon-boking-system-fe.vercel.app/
 
 # React + TypeScript + Vite
 
