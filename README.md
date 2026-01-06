@@ -1,3 +1,14 @@
+
+# Salon Booking System
+
+## 📖 Project Description
+This is the **frontend application** of the Salon Booking System.  
+The system allows users to book salon services **online before visiting the salon** by selecting the required service, preferred date, and available time slot, and completing the payment process.
+
+
+
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
