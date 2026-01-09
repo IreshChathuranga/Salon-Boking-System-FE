@@ -57,6 +57,21 @@ https://salon-boking-system-fe.vercel.app/
 
 ---
 
+Screenshots (UI)
+```bash
+[Home Page](screenshots/heropage.png)
+[Register Page](screenshots/signpage.png)
+[Login Page](screenshots/loginpage.png)
+[Booking Page](screenshots/bookingpage.png)
+[Payment Page](screenshots/checkoutpage.png)
+[Service Page](screenshots/servicepage.png)
+[Staff Page](screenshots/staffpage.png)
+[Admin Page](screenshots/admindashboardpage.png)
+[Admin staff manage Page](screenshots/staffmanagepage.png)
+```
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
