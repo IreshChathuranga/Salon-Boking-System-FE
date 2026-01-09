@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom"
 import { LayoutDashboard, Users, Calendar, Settings, LogOut } from "lucide-react"
 import dashboardImg from "../../assets/dashboard.png"
 
+
 export const AdminSidebar = () => {
   const location = useLocation()
 

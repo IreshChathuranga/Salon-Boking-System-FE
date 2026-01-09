@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { RequiredAuth } from "../components/auth/RequiredAuth"
-import { AuthLayout } from "../components/layout/AuthLayout"
-import { AdminOnlyAuth } from "../components/auth/AdminOnlyAuth"
-import { AdminLayout } from "../components/layout/AdminLayout"
+import { RequiredAuth } from "../components/auth/RequiredAuth"   
+import { AuthLayout } from "../components/layout/AuthLayout" 
+import { AdminOnlyAuth } from "../components/auth/AdminOnlyAuth" 
+import { AdminLayout } from "../components/layout/AdminLayout" 
 
 
 const Home = lazy(() => import('../pages/HomePage'));
@@ -23,7 +23,7 @@ const AdminSettingsPage = lazy(() => import('../pages/admin/AdminSettingsPage'))
 export default function Router() {
     return (
         <div>
-            <BrowserRouter>
+            <BrowserRouter>  
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
 
@@ -45,7 +45,7 @@ export default function Router() {
 
                         <Route
                             element={
-                                <AdminOnlyAuth>
+                                <AdminOnlyAuth> 
                                     <AdminLayout />
                                 </AdminOnlyAuth>
                             }

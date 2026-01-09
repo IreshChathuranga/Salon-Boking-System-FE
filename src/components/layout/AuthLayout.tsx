@@ -6,7 +6,7 @@ export const AuthLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <Outlet /> 
       <Footer />
     </>
   )
